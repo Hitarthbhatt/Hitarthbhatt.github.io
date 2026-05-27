@@ -80,7 +80,7 @@ window.HB = {
       stack: ["Swift", "SwiftUI", "Combine", "Firebase", "AVFoundation", "CoreLocation"],
       link: { label: "Live", url: "https://www.ai-health.com" },
       accent: "#7C3AED",
-      image: null,
+      image: "images/AI-Health.webp",
       kpis: [
         { value: "80%", label: "watchOS migrated to SwiftUI" },
         { value: "iPhone · iPad · Watch", label: "Three surfaces" }
