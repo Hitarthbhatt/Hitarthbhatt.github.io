@@ -1,7 +1,7 @@
 window.HB = {
   name: "Hitarth Bhatt",
   role: "iOS Engineer",
-  location: "Bengaluru, India",
+  location: "India",
   email: "hitarthbhatt12@gmail.com",
   phone: "+91 8302880263",
   github: "Hitarthbhatt",
