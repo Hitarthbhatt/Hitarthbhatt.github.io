@@ -418,12 +418,15 @@ a:focus-visible, button:focus-visible {
 .side-card--with-image { padding: 0; overflow: hidden; }
 .side-card__media {
   background: var(--canvas-flat);
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   display: block;
 }
 .side-card__media img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   display: block;
 }
 .side-card--with-image .side-card__body { padding: 28px; }
