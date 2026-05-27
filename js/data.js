@@ -10,7 +10,7 @@ window.HB = {
   linkedinUrl: "https://www.linkedin.com/in/hitarth-bhatt/",
   twitter: "Hitarthbhatt",
   twitterUrl: "https://twitter.com/HitarthBhatt10",
-  resumeUrl: "resume/HitarthResume.pdf",
+  resumeUrl: "https://github.com/Hitarthbhatt/Hitarthbhatt.github.io/releases/latest/download/HitarthResume.pdf",
 
   highlights: [
     { value: "40M+", label: "Users at Meesho" },
