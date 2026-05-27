@@ -96,15 +96,15 @@
       ])
     ]);
 
-    var canvasInner = p.image
-      ? el("img", { src: p.image, alt: p.name + " app screenshot", class: "fr-img", loading: "lazy" })
-      : phoneMock(p);
-
     var canvas = el("div", { class: "fr-canvas-wrap" }, [
-      el("div", {
-        class: "fr-canvas",
-        style: "background:linear-gradient(135deg," + hexToRgba(p.accent, 0.07) + "," + hexToRgba(p.accent, 0.15) + ");"
-      }, [canvasInner])
+      p.image
+        ? el("div", { class: "fr-canvas fr-canvas--flat" }, [
+            el("img", { src: p.image, alt: p.name + " app screenshots", class: "fr-img-flat", loading: "lazy" })
+          ])
+        : el("div", {
+            class: "fr-canvas",
+            style: "background:linear-gradient(135deg," + hexToRgba(p.accent, 0.07) + "," + hexToRgba(p.accent, 0.15) + ");"
+          }, [phoneMock(p)])
     ]);
 
     var row = el("article", { class: "fr-row" + (reverse ? " fr-row--rev" : "") }, [info, canvas]);
@@ -121,18 +121,64 @@
     var D = window.HB;
     var secondary = D.projects.slice(4);
     secondary.forEach(function (p) {
-      root.appendChild(el("article", { class: "side-card", id: "project-" + p.id }, [
+      var body = el("div", { class: "side-card__body" }, [
         el("div", { class: "side-meta" }, [dot(p.accent), el("span", null, [p.company + " · " + p.year])]),
         el("div", { class: "side-name" }, [p.name]),
-        el("div", { class: "side-desc" }, [p.description]),
+        el("div", { class: "side-desc" }, [p.tagline || p.description]),
         el("div", { class: "side-stack" }, p.stack.map(function (s) {
           return el("span", { class: "chip-tag" }, [s]);
         })),
         el("a", { class: "side-link", href: p.link.url, target: "_blank", rel: "noopener", style: "color:" + p.accent + ";" }, [
           p.link.label + " ", el("span", null, ["→"])
         ])
-      ]));
+      ]);
+      var children = [];
+      if (p.image) {
+        children.push(el("div", { class: "side-card__media" }, [
+          el("img", { src: p.image, alt: p.name + " preview", loading: "lazy" })
+        ]));
+      }
+      children.push(body);
+      var cls = "side-card" + (p.image ? " side-card--with-image" : "");
+      root.appendChild(el("article", { class: cls, id: "project-" + p.id }, children));
     });
+  }
+
+  function renderWriting(root) {
+    var D = window.HB;
+    if (!D.blog || !D.blog.posts || !D.blog.posts.length) return;
+    var post = D.blog.posts[0];
+
+    root.appendChild(el("div", { class: "writing__header" }, [
+      el("div", { class: "section-label", style: "margin-bottom:0;" }, ["Writing"]),
+      el("a", {
+        class: "writing__all",
+        href: D.blog.url,
+        target: "_blank",
+        rel: "noopener"
+      }, ["All posts on Hashnode ", el("span", null, ["↗"])])
+    ]));
+
+    root.appendChild(el("a", {
+      class: "writing__featured",
+      href: post.url,
+      target: "_blank",
+      rel: "noopener"
+    }, [
+      el("div", { class: "writing__bar" }),
+      el("div", { class: "writing__top" }, [
+        el("span", { class: "writing__pill" }, ["Latest"]),
+        el("span", { class: "writing__tag" }, [post.tag])
+      ]),
+      el("h3", { class: "writing__title" }, [post.title]),
+      el("p", { class: "writing__excerpt" }, [post.excerpt]),
+      el("div", { class: "writing__foot" }, [
+        el("span", null, [post.date]),
+        el("span", { class: "writing__dot" }),
+        el("span", null, [post.readTime]),
+        el("span", { class: "writing__read" }, ["Read →"])
+      ])
+    ]));
   }
 
   function renderExperience(root) {
@@ -173,6 +219,8 @@
     renderIndex(document.querySelector("[data-render='index']"));
     renderFeatured(document.querySelector("[data-render='featured']"));
     renderSide(document.querySelector("[data-render='side']"));
+    var writingRoot = document.querySelector("[data-render='writing']");
+    if (writingRoot) renderWriting(writingRoot);
     renderExperience(document.querySelector("[data-render='experience']"));
     renderFooter(document.querySelector("[data-render='footer']"));
   });

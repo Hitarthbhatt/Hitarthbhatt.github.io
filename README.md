@@ -23,7 +23,8 @@ The repo is tagged so either design can be checked out at any time.
 | Tag | Design | How to switch |
 |---|---|---|
 | `v1.0-legacy` | Original 2023 design (Bootstrap 4 + jQuery) | `git checkout v1.0-legacy` |
-| `v2.0-refined` | Refined 2026 redesign (Direction 01) | `git checkout v2.0-refined` |
+| `v2.0-refined` | Refined 2026 redesign (gradient project canvases) | `git checkout v2.0-refined` |
+| `v2.1-refined` | Refined v2.1 — flat image canvases, image-led side cards, Writing section | `git checkout v2.1-refined` |
 
 Return to the live branch with `git checkout master`.
 

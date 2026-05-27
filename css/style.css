@@ -16,7 +16,9 @@ a { color: inherit; }
   --card: #ffffff;
   --chip-bg: rgba(10, 10, 10, 0.04);
   --nav-bg: rgba(250, 250, 247, 0.72);
+  --canvas-flat: #f1f1f3;
   --accent: #FF5630;
+  --accent-tint: rgba(255, 86, 48, 0.08);
   --avail: #22c55e;
 }
 
@@ -29,6 +31,8 @@ html[data-theme="dark"] {
   --card: #141414;
   --chip-bg: rgba(255, 255, 255, 0.04);
   --nav-bg: rgba(10, 10, 10, 0.72);
+  --canvas-flat: #15151a;
+  --accent-tint: rgba(255, 86, 48, 0.14);
 }
 
 /* ---------- Base ---------- */
@@ -327,6 +331,17 @@ a:focus-visible, button:focus-visible {
   border: 1px solid var(--subtle);
   overflow: hidden;
 }
+.fr-canvas--flat {
+  padding: 0;
+  aspect-ratio: auto;
+  background: var(--canvas-flat);
+  display: block;
+}
+.fr-img-flat {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 .fr-img {
   max-height: 100%;
   width: auto;
@@ -392,7 +407,25 @@ a:focus-visible, button:focus-visible {
   border-radius: 16px;
   padding: 28px;
   border: 1px solid var(--subtle);
+  display: flex;
+  flex-direction: column;
 }
+.side-card--with-image { padding: 0; overflow: hidden; }
+.side-card__media {
+  background: var(--canvas-flat);
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.side-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.side-card--with-image .side-card__body { padding: 28px; }
 .side-meta {
   display: flex;
   align-items: center;
@@ -414,6 +447,97 @@ a:focus-visible, button:focus-visible {
   font-weight: 600;
 }
 .side-link:hover { text-decoration: underline; }
+
+/* ---------- Writing ---------- */
+.writing-wrap { max-width: 1080px; margin: 0 auto; padding: 20px 40px 100px; }
+.writing__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.writing__all {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.writing__all:hover { text-decoration: underline; }
+.writing__featured {
+  background: var(--card);
+  border: 1px solid var(--subtle);
+  border-radius: 16px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.18s ease;
+}
+.writing__featured:hover { border-color: var(--subtle-strong); }
+.writing__bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 33%, transparent));
+}
+.writing__top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.writing__pill {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: var(--accent-tint);
+}
+.writing__tag { font-size: 12px; color: var(--muted); }
+.writing__title {
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin: 0;
+}
+.writing__excerpt {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 16px 0 0;
+  max-width: 640px;
+}
+.writing__foot {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 12px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.writing__dot {
+  width: 3px; height: 3px;
+  border-radius: 3px;
+  background: var(--muted);
+  display: inline-block;
+}
+.writing__read {
+  margin-left: auto;
+  color: var(--accent);
+  font-weight: 600;
+}
 
 /* ---------- Experience ---------- */
 .exp-wrap { max-width: 1080px; margin: 0 auto; padding: 20px 40px 120px; }
@@ -481,7 +605,9 @@ a.footer-value:hover { color: var(--accent); }
   .hero__grid { grid-template-columns: 1fr; gap: 40px; align-items: start; }
   .hero__name { font-size: 72px; }
   .hero { padding: 56px 24px 40px; }
-  .container, .idx, .featured, .side-wrap, .exp-wrap { padding-left: 24px; padding-right: 24px; }
+  .container, .idx, .featured, .side-wrap, .writing-wrap, .exp-wrap { padding-left: 24px; padding-right: 24px; }
+  .writing__featured { padding: 24px; }
+  .writing__title { font-size: 24px; }
   .footer { padding: 64px 24px; }
   .nav__inner { padding: 14px 24px; gap: 12px; }
   .fr-row { grid-template-columns: 1fr; gap: 32px; padding: 48px 0; }
