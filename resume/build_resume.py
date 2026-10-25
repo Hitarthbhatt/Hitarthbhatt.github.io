@@ -31,7 +31,7 @@ LINKS = [
 EXPERIENCE = [
     {
         "company": "eBay", "product": ("TCGplayer App", "https://apps.apple.com/us/app/tcgplayer/id1247645833"),
-        "location": "India", "role": "Senior Software Engineer", "dates": "July 2026 – Present",
+        "location": "Bangalore, India", "role": "Senior Software Engineer", "dates": "July 2026 – Present",
         "bullets": [
             "Building the <b>TCGplayer iOS app</b>, a trading card marketplace and collection tracker used by <b>1M active users</b>.",
             "Shipped <b>PAX Australia onboarding</b> for TCGplayer's <b>Australia launch</b> and redesigned the <b>Account &amp; Settings</b> experience.",
