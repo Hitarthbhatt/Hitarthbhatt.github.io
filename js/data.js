@@ -15,18 +15,35 @@ window.HB = {
   highlights: [
     { value: "40M+", label: "Users at Meesho" },
     { value: "10+ MB", label: "Binary size shaved" },
-    { value: "5+ yrs", label: "Shipping iOS" },
-    { value: "4", label: "Apps in production" }
+    { value: "6+ yrs", label: "Shipping iOS" },
+    { value: "5", label: "Apps in production" }
   ],
 
   projects: [
     {
+      id: "tcgplayer",
+      name: "TCGplayer",
+      company: "eBay",
+      year: "2026 — Present",
+      tagline: "The marketplace for trading card collectors.",
+      description: "Building TCGplayer's iOS app for collectors who buy, sell, and track trading cards. Shipped PAX Australia onboarding for the Australia launch, redesigned Account & Settings, built a debug menu to override feature flags and experiments, and integrated MetricKit to track on-device performance.",
+      stack: ["Swift", "SwiftUI", "UIKit", "MetricKit"],
+      link: { label: "App Store", url: "https://apps.apple.com/us/app/tcgplayer/id1247645833" },
+      accent: "#2563EB",
+      image: "images/TCGplayer.png",
+      kpis: [
+        { value: "300K", label: "Weekly active users" },
+        { value: "700K", label: "Monthly active users" },
+        { value: "AU", label: "Australia launch onboarding" }
+      ]
+    },
+    {
       id: "meesho",
       name: "Meesho",
       company: "Meesho",
-      year: "2025 — Present",
+      year: "2025 — 2026",
       tagline: "Social-first commerce for India's next billion shoppers.",
-      description: "Architecting modular features, AI developer tooling, and binary optimizations across an app used by 40M+ shoppers and resellers.",
+      description: "Architected modular features, AI developer tooling, and binary optimizations across an app used by 40M+ shoppers and resellers.",
       stack: ["Swift", "SwiftUI", "UIKit", "SPM", "Mergeable Binaries"],
       link: { label: "App Store", url: "https://apps.apple.com/in/app/meesho-online-shopping/id1457958492" },
       accent: "#F43F5E",
@@ -121,7 +138,8 @@ window.HB = {
   ],
 
   experience: [
-    { co: "Meesho", role: "iOS Engineer", years: "Apr 2025 — Present" },
+    { co: "eBay (TCGplayer)", role: "iOS Engineer", years: "Jul 2026 — Present" },
+    { co: "Meesho", role: "iOS Engineer", years: "Apr 2025 — Jun 2026" },
     { co: "Walmart Global Tech", role: "iOS Engineer", years: "Mar 2024 — Apr 2025" },
     { co: "Adobe (via HSC)", role: "iOS Engineer", years: "Apr 2023 — Mar 2024" },
     { co: "Simform Solutions", role: "Swift / iOS Developer", years: "Jul 2021 — Feb 2023" },
@@ -132,6 +150,14 @@ window.HB = {
     handle: "hitarth",
     url: "https://hitarth.hashnode.dev",
     posts: [
+      {
+        title: "My iOS App Got 22% Smaller With One Xcode Setting",
+        excerpt: "Modularizing made the app bigger and slower to launch. Here's where the kilobytes went, and the one build setting that won them all back with zero code changes.",
+        date: "2026",
+        readTime: "6 min read",
+        tag: "App Size",
+        url: "https://hitarth.hashnode.dev/reduce-ios-app-size-one-xcode-setting"
+      },
       {
         title: "Tired of slow Xcode builds? Meet Bazel.",
         excerpt: "How adopting Bazel transformed our iOS build pipeline at Walmart — from waiting on Xcode to a snappier, more reliable dev loop.",

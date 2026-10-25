@@ -113,13 +113,13 @@
 
   function renderFeatured(root) {
     var D = window.HB;
-    var featured = D.projects.slice(0, 4);
+    var featured = D.projects.slice(0, 5);
     featured.forEach(function (p, i) { root.appendChild(featuredRow(p, i % 2 === 1)); });
   }
 
   function renderSide(root) {
     var D = window.HB;
-    var secondary = D.projects.slice(4);
+    var secondary = D.projects.slice(5);
     secondary.forEach(function (p) {
       var body = el("div", { class: "side-card__body" }, [
         el("div", { class: "side-meta" }, [dot(p.accent), el("span", null, [p.company + " · " + p.year])]),
