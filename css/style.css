@@ -612,7 +612,7 @@ a.footer-value:hover { color: var(--accent); }
     position: fixed;
     top: 104px;
     left: calc(50% + 540px + 32px);
-    width: min(280px, calc(50vw - 540px - 64px));
+    width: min(380px, calc(50vw - 540px - 64px));
     max-height: calc(100vh - 136px);
     overflow-y: auto;
     z-index: 10;
@@ -620,29 +620,41 @@ a.footer-value:hover { color: var(--accent); }
   }
 }
 .rail--hidden { opacity: 0; pointer-events: none; }
-.rail__label { margin-bottom: 8px; }
+.rail__label { margin-bottom: 12px; }
 .rail__post {
-  display: block;
-  padding: 16px 0;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 18px 0;
   border-bottom: 1px solid var(--subtle);
   color: inherit;
 }
+.rail__post--lead { flex-direction: column; gap: 0; padding-top: 0; }
 .rail__cover {
   width: 100%;
   aspect-ratio: 1.9;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 12px;
   border: 1px solid var(--subtle);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
+.rail__thumb {
+  width: 96px;
+  aspect-ratio: 1.9;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--subtle);
+  flex-shrink: 0;
+}
+.rail__text { min-width: 0; }
 .rail__meta {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
 .rail__title {
-  margin-top: 4px;
-  font-size: 14px;
+  margin-top: 6px;
+  font-size: 15px;
   font-weight: 600;
   line-height: 1.35;
   letter-spacing: -0.015em;
@@ -652,8 +664,19 @@ a.footer-value:hover { color: var(--accent); }
   overflow: hidden;
   transition: color 0.18s ease;
 }
+.rail__post--lead .rail__title { font-size: 20px; line-height: 1.25; letter-spacing: -0.02em; }
+.rail__excerpt {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 .rail__post:hover .rail__title { color: var(--accent); }
-.rail__all { margin-top: 16px; }
+.rail__all { margin-top: 18px; font-size: 14px; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {

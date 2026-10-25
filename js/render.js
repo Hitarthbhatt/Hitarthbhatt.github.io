@@ -208,10 +208,15 @@
 
     root.appendChild(el("div", { class: "section-label rail__label" }, ["Recent writing"]));
     posts.forEach(function (p, i) {
-      root.appendChild(el("a", { class: "rail__post", href: p.url, target: "_blank", rel: "noopener" }, [
-        i === 0 && p.cover ? el("img", { class: "rail__cover", src: p.cover, alt: "", loading: "lazy" }) : null,
-        el("div", { class: "rail__meta" }, [formatDate(p.date) + " · " + p.readTime]),
-        el("div", { class: "rail__title" }, [p.title])
+      // Newest post gets a full cover + excerpt; the rest are compact rows with a thumbnail.
+      var lead = i === 0;
+      root.appendChild(el("a", { class: "rail__post" + (lead ? " rail__post--lead" : ""), href: p.url, target: "_blank", rel: "noopener" }, [
+        p.cover ? el("img", { class: lead ? "rail__cover" : "rail__thumb", src: p.cover, alt: "", loading: "lazy" }) : null,
+        el("div", { class: "rail__text" }, [
+          el("div", { class: "rail__meta" }, [formatDate(p.date) + " · " + p.readTime]),
+          el("div", { class: "rail__title" }, [p.title]),
+          lead && p.excerpt ? el("div", { class: "rail__excerpt" }, [p.excerpt]) : null
+        ])
       ]));
     });
     root.appendChild(el("a", { class: "writing__all rail__all", href: D.blog.url, target: "_blank", rel: "noopener" }, [
