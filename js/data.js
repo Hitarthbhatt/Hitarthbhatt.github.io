@@ -13,7 +13,7 @@ window.HB = {
   resumeUrl: "https://github.com/Hitarthbhatt/Hitarthbhatt.github.io/releases/latest/download/HitarthResume.pdf",
 
   highlights: [
-    { value: "40M+", label: "Users at Meesho" },
+    { value: "1M", label: "Users at TCGplayer" },
     { value: "10+ MB", label: "Binary size shaved" },
     { value: "6+ yrs", label: "Shipping iOS" },
     { value: "5", label: "Apps in production" }
