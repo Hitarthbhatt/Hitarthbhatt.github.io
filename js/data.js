@@ -32,9 +32,9 @@ window.HB = {
       accent: "#2563EB",
       image: "images/TCGplayer.png",
       kpis: [
-        { value: "300K", label: "Weekly active users" },
-        { value: "700K", label: "Monthly active users" },
-        { value: "AU", label: "Australia launch onboarding" }
+        { value: "1M", label: "Active users" },
+        { value: "AU", label: "Australia launch onboarding" },
+        { value: "MetricKit", label: "On-device performance" }
       ]
     },
     {
@@ -138,7 +138,7 @@ window.HB = {
   ],
 
   experience: [
-    { co: "eBay (TCGplayer)", role: "iOS Engineer", years: "Jul 2026 — Present" },
+    { co: "eBay (TCGplayer)", role: "Senior Software Engineer", years: "Jul 2026 — Present" },
     { co: "Meesho", role: "iOS Engineer", years: "Apr 2025 — Jun 2026" },
     { co: "Walmart Global Tech", role: "iOS Engineer", years: "Mar 2024 — Apr 2025" },
     { co: "Adobe (via HSC)", role: "iOS Engineer", years: "Apr 2023 — Mar 2024" },
