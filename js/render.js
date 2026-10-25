@@ -144,10 +144,29 @@
     });
   }
 
+  // Latest posts from js/posts.js (synced from Hashnode by a GitHub Action),
+  // with hand-written tag/excerpt from data.js winning when the URL matches.
+  function recentPosts() {
+    var D = window.HB;
+    var curated = (D.blog && D.blog.posts) || [];
+    var synced = window.HB_POSTS || curated;
+    return synced.map(function (p) {
+      var match = curated.filter(function (c) { return c.url === p.url; })[0];
+      return match ? Object.assign({}, p, { tag: match.tag, excerpt: match.excerpt }) : p;
+    });
+  }
+
+  function formatDate(date) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return date;
+    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    return months[parseInt(date.slice(5, 7), 10) - 1] + " " + date.slice(0, 4);
+  }
+
   function renderWriting(root) {
     var D = window.HB;
-    if (!D.blog || !D.blog.posts || !D.blog.posts.length) return;
-    var post = D.blog.posts[0];
+    var posts = recentPosts();
+    if (!posts.length) return;
+    var post = posts[0];
 
     root.appendChild(el("div", { class: "writing__header" }, [
       el("div", { class: "section-label", style: "margin-bottom:0;" }, ["Writing"]),
@@ -173,12 +192,39 @@
       el("h3", { class: "writing__title" }, [post.title]),
       el("p", { class: "writing__excerpt" }, [post.excerpt]),
       el("div", { class: "writing__foot" }, [
-        el("span", null, [post.date]),
+        el("span", null, [formatDate(post.date)]),
         el("span", { class: "writing__dot" }),
         el("span", null, [post.readTime]),
         el("span", { class: "writing__read" }, ["Read →"])
       ])
     ]));
+  }
+
+  // Desktop-only side rail in the right gutter; CSS hides it when there isn't room.
+  function renderRail(root) {
+    var D = window.HB;
+    var posts = recentPosts().slice(0, 5);
+    if (!posts.length) return;
+
+    root.appendChild(el("div", { class: "section-label rail__label" }, ["Recent writing"]));
+    posts.forEach(function (p, i) {
+      root.appendChild(el("a", { class: "rail__post", href: p.url, target: "_blank", rel: "noopener" }, [
+        i === 0 && p.cover ? el("img", { class: "rail__cover", src: p.cover, alt: "", loading: "lazy" }) : null,
+        el("div", { class: "rail__meta" }, [formatDate(p.date) + " · " + p.readTime]),
+        el("div", { class: "rail__title" }, [p.title])
+      ]));
+    });
+    root.appendChild(el("a", { class: "writing__all rail__all", href: D.blog.url, target: "_blank", rel: "noopener" }, [
+      "All posts ", el("span", null, ["↗"])
+    ]));
+
+    // Fade out over the footer so the rail never covers it.
+    var footer = document.querySelector(".footer");
+    if (footer && "IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        root.classList.toggle("rail--hidden", entries[0].isIntersecting);
+      }).observe(footer);
+    }
   }
 
   function renderExperience(root) {
@@ -221,6 +267,8 @@
     renderSide(document.querySelector("[data-render='side']"));
     var writingRoot = document.querySelector("[data-render='writing']");
     if (writingRoot) renderWriting(writingRoot);
+    var railRoot = document.querySelector("[data-render='rail']");
+    if (railRoot) renderRail(railRoot);
     renderExperience(document.querySelector("[data-render='experience']"));
     renderFooter(document.querySelector("[data-render='footer']"));
   });
