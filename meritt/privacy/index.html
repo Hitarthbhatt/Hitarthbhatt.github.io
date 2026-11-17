@@ -73,8 +73,9 @@
     </header>
 
     <div class="summary">
-      <p><strong>In short:</strong> your money data stays on your iPhone. Meritt has no account, no ads, no
-      analytics and no tracking. The only thing that ever leaves your device is feedback you choose to send.</p>
+      <p><strong>In short:</strong> your money data stays on your iPhone. Meritt has no account, no ads and no
+      cross-app tracking. It counts installs and app opens to know how many people use it. Your entries never
+      leave your device, and feedback leaves only when you choose to send it.</p>
     </div>
 
     <h2>What Meritt stores, and where</h2>
@@ -107,6 +108,24 @@
     answer your feedback and to fix problems. It is never sold, shared or used for advertising. Nothing is
     sent unless you tap Send.</p>
 
+    <h2>Usage statistics</h2>
+    <p>When Meritt is first installed, and each time it's opened, it sends a short event to Amplitude, an
+    analytics service. Each event contains:</p>
+    <ul>
+      <li>which of the two it was ("installed" or "opened"),</li>
+      <li>a random identifier for this copy of the app (Apple's identifier for vendor, which is different in every
+      developer's apps and resets when all of the developer's apps are deleted),</li>
+      <li>the app version, iOS version, iPhone model and device language,</li>
+      <li>whether it's a test build or the App Store build.</li>
+    </ul>
+    <p>Meritt tells Amplitude not to record your IP address or location. No amounts, entries, notes, category or
+    account names, or anything else you type are sent. The numbers are used only to count installs and how
+    often the app is used. They are not used for advertising, not combined with other companies' data, and not
+    used to track you across apps or websites. Amplitude processes them under
+    <a href="https://amplitude.com/privacy">Amplitude's Privacy Policy</a> and keeps them for up to 12 months.</p>
+    <p>There is no in-app switch for this. Deleting the app stops it; to have past events deleted, use
+    <em>Send Feedback</em>.</p>
+
     <h2>Ratings</h2>
     <p>"Rate Meritt" uses Apple's built-in rating prompt or opens the App Store. Apple handles that under its own
     privacy policy.</p>
@@ -114,15 +133,17 @@
     <h2>What Meritt does not do</h2>
     <ul>
       <li>No account or sign-in.</li>
-      <li>No advertising, analytics or crash-reporting services.</li>
+      <li>No advertising and no crash-reporting services.</li>
       <li>No tracking across apps or websites, and no advertising identifier.</li>
       <li>No selling or sharing of data.</li>
     </ul>
 
-    <h2>Deleting your feedback</h2>
+    <h2>Deleting your data</h2>
     <p>To have feedback you sent deleted, send another message through <em>Send Feedback</em> asking for it, with
     the email address you used (or enough of the original text to find it). It will be deleted within 30 days.
     Feedback without a deletion request is kept only as long as it's useful for improving the app.</p>
+    <p>Usage statistics can't be linked to you by name. To have them deleted, ask through <em>Send Feedback</em>; they
+    are removed for this copy of the app within 30 days.</p>
 
     <h2>Children</h2>
     <p>Meritt is not directed at children under 13 and does not knowingly collect information from them.</p>
